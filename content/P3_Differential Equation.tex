@@ -278,5 +278,128 @@ This completes our proof.
 \end{proof}
 
 \section{Second-order linear homogeneous ODEs}
+\begin{theorem}[Solution of Second-Order Linear Homogeneous ODE]
+Consider the second-order linear homogeneous ordinary differential equation:
+\[
+\frac{d^2 y}{dx^2} + p(x)\frac{dy}{dx} + q(x)y = 0
+\]
+where $p(x)$ and $q(x)$ are continuous functions on an interval $I$. The general solution to this equation is given by a linear combination of two independent solutions $y_1(x)$ and $y_2(x)$:
+\[
+y(x) = C_1 y_1(x) + C_2 y_2(x)
+\]
+where $C_1$ and $C_2$ are arbitrary constants.
+\end{theorem}
 
+\begin{proof}
+The general solution to a second-order linear homogeneous ODE can be found by solving the characteristic equation associated with the differential equation.
+
+For constant coefficients, the equation is of the form:
+\[
+\frac{d^2 y}{dx^2} + a \frac{dy}{dx} + b y = 0
+\]
+where $a$ and $b$ are constants. To solve this, we assume the solution is of the form $y = e^{rx}$, where $r$ is a constant. Substituting this into the differential equation gives the characteristic equation:
+\[
+r^2 + a r + b = 0
+\]
+
+Solving this quadratic equation, we obtain three cases for the roots $r_1$ and $r_2$:
+
+\begin{itemize}
+    \item If $r_1 \neq r_2$ (distinct real roots), the general solution is:
+    \[
+    y(x) = C_1 e^{r_1 x} + C_2 e^{r_2 x}
+    \]
+    \item If $r_1 = r_2$ (repeated root), the general solution is:
+    \[
+    y(x) = (C_1 + C_2 x) e^{r_1 x}
+    \]
+    \item If $r_1$ and $r_2$ are complex conjugates ($r_1 = \alpha + i\beta$, $r_2 = \alpha - i\beta$), the general solution is:
+    \[
+    y(x) = e^{\alpha x}(C_1 \cos(\beta x) + C_2 \sin(\beta x))
+    \]
+\end{itemize}
+
+In the case of non-constant coefficients, finding solutions involves more advanced techniques such as reduction of order or using known solutions, but the general solution remains a linear combination of two independent solutions. This completes our proof.
+\end{proof}
 \section{Second-order linear non-homogeneous ODEs}
+\begin{theorem}[Solution of Second-Order Linear Non-Homogeneous ODE]
+Consider the second-order linear non-homogeneous ordinary differential equation:
+\[
+\frac{d^2 y}{dx^2} + p(x)\frac{dy}{dx} + q(x)y = g(x)
+\]
+where $p(x)$, $q(x)$, and $g(x)$ are continuous functions on an interval $I$. The general solution to this equation is the sum of the general solution of the corresponding homogeneous equation and a particular solution to the non-homogeneous equation:
+\[
+y(x) = y_h(x) + y_p(x)
+\]
+where $y_h(x)$ is the general solution to the homogeneous equation and $y_p(x)$ is a particular solution to the non-homogeneous equation.
+\end{theorem}
+
+\begin{proof}
+The solution to a second-order linear non-homogeneous ODE involves two steps:
+
+1. Solve the corresponding homogeneous equation:
+\[
+\frac{d^2 y}{dx^2} + p(x)\frac{dy}{dx} + q(x)y = 0
+\]
+The general solution to this equation is denoted as $y_h(x)$, which is found using the method described in the previous section.
+
+2. Find a particular solution** to the non-homogeneous equation:
+\[
+\frac{d^2 y}{dx^2} + p(x)\frac{dy}{dx} + q(x)y = g(x)
+\]
+The method used to find $y_p(x)$ depends on the form of $g(x)$. Common methods include:
+\begin{itemize}
+    \item Method of undetermined coefficients: This method works when $g(x)$ is a polynomial, exponential, or a sine/cosine function. A trial solution is proposed, and the coefficients are determined by substituting into the differential equation.
+    \item Variation of parameters: This method is more general and can be applied when the method of undetermined coefficients is not suitable. It uses the solutions of the homogeneous equation to construct a particular solution.
+\end{itemize}
+
+The complete solution is then the sum of the homogeneous solution and the particular solution:
+\[
+y(x) = y_h(x) + y_p(x)
+\]
+
+This completes our proof.
+\end{proof}
+\subsubsection*{Method of Undetermined Coefficients: Techniques Guessing the Particular Solution}
+In the method of undetermined coefficients, we guess the form of the particular solution \( y_p(x) \) based on the form of the non-homogeneous term \( r(x) \). Below is a table summarizing common forms of \( r(x) \) and their corresponding guesses for \( y_p(x) \). If the guessed particular solution overlaps with the homogeneous solution, we multiply the guess by a power of \( x \) to ensure linear independence.
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{|p{6cm}|p{8cm}|}
+\hline
+\textbf{Non-homogeneous term \( r(x) \)} & \textbf{Guess for particular solution \( y_p(x) \)} \\
+\hline
+\( C \) & \( A \) \\
+\hline
+\( ax + b \) & \( A x + B \) \\
+\hline
+\( ax^2 + bx + c \) & \( A x^2 + B x + C \) \\
+\hline
+\( e^{\alpha x} \) & \( A e^{\alpha x} \) \\
+\hline
+\( x^n e^{\alpha x} \) & \( (A_n x^n + A_{n-1} x^{n-1} + \dots + A_0) e^{\alpha x} \) \\
+\hline
+\( \sin(\beta x) \text{ or } \cos(\beta x) \) & \( A \sin(\beta x) + B \cos(\beta x) \) \\
+\hline
+\( x^n \sin(\beta x) \text{ or } x^n \cos(\beta x) \) & \( (A_n x^n + A_{n-1} x^{n-1} + \dots + A_0) \sin(\beta x) + (B_n x^n + B_{n-1} x^{n-1} + \dots + B_0) \cos(\beta x) \) \\
+\hline
+\( e^{\alpha x} \sin(\beta x) \text{ or } e^{\alpha x} \cos(\beta x) \) & \( e^{\alpha x} (A \cos(\beta x) + B \sin(\beta x)) \) \\
+\hline
+\end{tabular}
+\caption{Common non-homogeneous terms and corresponding guesses for particular solutions.}
+\end{table}
+The table provides common forms of non-homogeneous terms \( r(x) \) and the corresponding guesses for the particular solution \( y_p(x) \). Here's a breakdown of the logic behind the guesses:
+
+\begin{itemize}
+    \item \textbf{Constant terms}: For constant non-homogeneous terms, we guess that the particular solution is also a constant, \( y_p(x) = A \). If the constant already appears in the homogeneous solution, we multiply by \( x \) to ensure linear independence.
+    
+    \item \textbf{Polynomials}: For polynomial non-homogeneous terms, we guess that the particular solution is a polynomial of the same degree. For example, if \( r(x) = ax^2 + bx + c \), then \( y_p(x) \) is guessed to be \( A x^2 + B x + C \). If part of this polynomial appears in the homogeneous solution, we multiply by \( x \) to create a new linearly independent solution.
+    
+    \item \textbf{Exponential terms}: For an exponential non-homogeneous term \( r(x) = e^{\alpha x} \), we guess that the particular solution is also of the form \( y_p(x) = A e^{\alpha x} \). If \( e^{\alpha x} \) is part of the homogeneous solution, we multiply by \( x \) (or higher powers of \( x \)) to maintain linear independence.
+    
+    \item \textbf{Sine and Cosine terms}: When \( r(x) \) involves trigonometric functions like \( \sin(\beta x) \) or \( \cos(\beta x) \), we guess that the particular solution is a linear combination of both sine and cosine, i.e., \( y_p(x) = A \sin(\beta x) + B \cos(\beta x) \). If \( \sin(\beta x) \) or \( \cos(\beta x) \) already appears in the homogeneous solution, we multiply by \( x \).
+    
+    \item \textbf{Products of polynomials and exponentials or trigonometric functions}: When the non-homogeneous term is a product of a polynomial and an exponential or trigonometric function, the particular solution is guessed as a polynomial multiplied by the exponential or trigonometric term. For example, if \( r(x) = x^n e^{\alpha x} \), the guess is \( y_p(x) = (A_n x^n + A_{n-1} x^{n-1} + \dots + A_0) e^{\alpha x} \). If there's overlap with the homogeneous solution, multiply by \( x \).
+\end{itemize}
+
+\noindent The key principle behind these guesses is that the particular solution must match the form of the non-homogeneous term \( r(x) \), while maintaining linear independence from the homogeneous solution. If any part of the guessed particular solution overlaps with the homogeneous solution, multiplying by \( x \) (or higher powers of \( x \)) ensures that the solution is linearly independent.
