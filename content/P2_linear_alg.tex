@@ -1,0 +1,646 @@
+\chapter{Geometry in Euclidean Space}
+\section{Vector and Linear Combination}
+
+\section{Point, Line, Plane, and Beyond}
+
+\section{Parametric Curves and Surfaces}
+
+\chapter{Matrices and System of Linear Equations}
+
+\chapter{Vector Space and Subspace}
+
+\section{Definitions and Properties of Vector Space}
+\subsection{$\mathbb{C}$}
+\begin{exercise}
+Show that for every $\alpha \in \mathbb{C}$, there exists a unique $\beta \in \mathbf{C}$ such that $\alpha + \beta = 0$.
+\end{exercise}
+
+\begin{solution}
+Given any $\alpha \in \mathbb{C}$, we need to find a $\beta \in \mathbf{C}$ such that $\alpha + \beta = 0$. Let $\beta = -\alpha$. Then:
+\[
+\alpha + \beta = \alpha + (-\alpha) = 0.
+\]
+Thus, for every $\alpha \in \mathbb{C}$, $\beta = -\alpha$ satisfies the equation $\alpha + \beta = 0$. To show uniqueness, assume there exists another $\beta' \in \mathbf{C}$ such that $\alpha + \beta' = 0$. Then:
+\[
+\alpha + \beta = \alpha + \beta' = 0 \implies \beta = \beta'.
+\]
+Therefore, $\beta = -\alpha$ is the unique solution.
+\end{solution}
+
+\begin{exercise}
+Show that for every $\alpha \in \mathbb{C}$ with $\alpha \neq 0$, there exists a unique $\beta \in \mathbb{C}$ such that $\alpha \beta = 1$.
+\end{exercise}
+
+\begin{solution}
+Given any $\alpha \in \mathbf{C}$ with $\alpha \neq 0$, we need to find a $\beta \in \mathbb{C}$ such that $\alpha \beta = 1$. Let $\beta = \frac{1}{\alpha}$. Then:
+\[
+\alpha \beta = \alpha \left( \frac{1}{\alpha} \right) = 1.
+\]
+Thus, for every $\alpha \in \mathbb{C}$ with $\alpha \neq 0$, $\beta = \frac{1}{\alpha}$ satisfies the equation $\alpha \beta = 1$. To show uniqueness, assume there exists another $\beta' \in \mathbb{C}$ such that $\alpha \beta' = 1$. Then:
+\[
+\alpha \beta = \alpha \beta' = 1 \implies \beta = \beta'.
+\]
+Therefore, $\beta = \frac{1}{\alpha}$ is the unique solution.
+\end{solution}
+
+\begin{exercise}
+Show that $(ab)x = a(bx)$ for all $x \in \mathbf{F}^{n}$ and all $a, b \in \mathbf{F}$.
+\end{exercise}
+
+\begin{solution}
+Let $x \in \mathbf{F}^{n}$ and $a, b \in \mathbf{F}$. We want to show that $(ab)x = a(bx)$. 
+
+First, recall that in a vector space over a field $\mathbf{F}$, the scalar multiplication is associative. This means that for any scalar $c \in \mathbf{F}$ and vector $y \in \mathbf{F}^{n}$, we have $c(y) = (cy)$. 
+
+Now, consider the left-hand side of the equation:
+\[
+(ab)x
+\]
+By the definition of scalar multiplication in a vector space, multiplying a vector by a scalar is the same as multiplying each component of the vector by the scalar. Hence, we can write:
+\[
+(ab)x = (ab) \cdot x
+\]
+
+Next, consider the right-hand side of the equation:
+\[
+a(bx)
+\]
+First, compute $bx$:
+\[
+bx = b \cdot x
+\]
+Then, multiplying the result by $a$ gives:
+\[
+a(bx) = a \cdot (b \cdot x)
+\]
+
+By the associativity of scalar multiplication, we have:
+\[
+a \cdot (b \cdot x) = (a \cdot b) \cdot x = (ab)x
+\]
+
+Thus, we have shown that:
+\[
+(ab)x = a(bx)
+\]
+for all $x \in \mathbf{F}^{n}$ and all $a, b \in \mathbf{F}$.
+\end{solution}
+
+\begin{exercise}
+Show that $(a+b)x = ax + bx$ for all $a, b \in \mathbf{F}$ and all $x \in \mathbf{F}^{n}$.
+\end{exercise}
+
+\begin{solution}
+Let $x \in \mathbf{F}^{n}$ and $a, b \in \mathbf{F}$. We want to show that $(a+b)x = ax + bx$.
+
+Recall that in a vector space over a field $\mathbf{F}$, scalar multiplication distributes over vector addition. This means that for any scalars $c, d \in \mathbf{F}$ and any vector $y \in \mathbf{F}^{n}$, we have:
+\[
+(c + d)y = cy + dy.
+\]
+
+Now, consider the left-hand side of the equation:
+\[
+(a + b)x.
+\]
+By the definition of scalar multiplication in a vector space, we have:
+\[
+(a + b)x = (a + b) \cdot x.
+\]
+
+Next, consider the right-hand side of the equation:
+\[
+ax + bx.
+\]
+First, compute $ax$ and $bx$:
+\[
+ax = a \cdot x,
+\]
+\[
+bx = b \cdot x.
+\]
+Then, add these results together:
+\[
+ax + bx = a \cdot x + b \cdot x.
+\]
+
+By the distributive property of scalar multiplication over vector addition, we have:
+\[
+(a + b) \cdot x = a \cdot x + b \cdot x.
+\]
+
+Thus, we have shown that:
+\[
+(a + b)x = ax + bx
+\]
+for all $a, b \in \mathbf{F}$ and all $x \in \mathbf{F}^{n}$.
+\end{solution}
+
+\begin{exercise}
+Show that $\lambda(x + y) = \lambda x + \lambda y$ for all $\lambda \in \mathbf{F}$ and all $x, y \in \mathbf{F}^{n}$.
+\end{exercise}
+
+\begin{solution}
+Let $x, y \in \mathbf{F}^{n}$ and $\lambda \in \mathbf{F}$. We want to show that $\lambda(x + y) = \lambda x + \lambda y$.
+
+Recall that in a vector space over a field $\mathbf{F}$, scalar multiplication distributes over vector addition. This means that for any scalar $\lambda \in \mathbf{F}$ and any vectors $x, y \in \mathbf{F}^{n}$, we have:
+\[
+\lambda(x + y) = \lambda x + \lambda y.
+\]
+
+Now, consider the left-hand side of the equation:
+\[
+\lambda(x + y).
+\]
+By the definition of vector addition and scalar multiplication in a vector space, we have:
+\[
+x + y \in \mathbf{F}^{n}.
+\]
+Then, scalar multiplication distributes over this vector addition:
+\[
+\lambda(x + y).
+\]
+
+Next, consider the right-hand side of the equation:
+\[
+\lambda x + \lambda y.
+\]
+First, compute $\lambda x$ and $\lambda y$:
+\[
+\lambda x \in \mathbf{F}^{n},
+\]
+\[
+\lambda y \in \mathbf{F}^{n}.
+\]
+Then, add these results together:
+\[
+\lambda x + \lambda y \in \mathbf{F}^{n}.
+\]
+
+By the distributive property of scalar multiplication over vector addition, we have:
+\[
+\lambda(x + y) = \lambda x + \lambda y.
+\]
+
+Thus, we have shown that:
+\[
+\lambda(x + y) = \lambda x + \lambda y
+\]
+for all $\lambda \in \mathbf{F}$ and all $x, y \in \mathbf{F}^{n}$.
+\end{solution}
+
+\section{$F^n$ and $F^S$}
+\begin{definition}[$F^n$]
+Let $\mathbf{F}$ be a field and $n$ be a positive integer. The set $\mathbf{F}^n$ is defined as the set of all $n$-tuples of elements from $\mathbf{F}$:
+\[
+\mathbf{F}^n = \{ (x_1, x_2, \ldots, x_n) \mid x_i \in \mathbf{F} \text{ for } i = 1, 2, \ldots, n \}.
+\]
+Elements of $\mathbf{F}^n$ are called vectors, and $\mathbf{F}^n$ is called an $n$-dimensional vector space over the field $\mathbf{F}$.
+\end{definition}
+\begin{definition}[$F^S$]
+Let $\mathbf{F}$ be a field and $S$ be a set. The set $\mathbf{F}^S$ is defined as the set of all functions from $S$ to $\mathbf{F}$:
+\[
+\mathbf{F}^S = \{ f \mid f: S \to \mathbf{F} \}.
+\]
+Each function $f \in \mathbf{F}^S$ assigns an element of $\mathbf{F}$ to each element of $S$. $\mathbf{F}^S$ is called a vector space over the field $\mathbf{F}$.
+\end{definition}
+\begin{exercise}
+Suppose $a \in \mathbf{F}, v \in V$, and $av = 0$. Prove that $a = 0$ or $v = 0$. 
+\end{exercise}
+
+\begin{solution}
+We will prove this statement by contradiction.
+
+Assume the contrary, that is, suppose $a \neq 0$ and $v \neq 0$. 
+
+Since $a \neq 0$, it has a multiplicative inverse $a^{-1}$ in the field $\mathbf{F}$. 
+
+Now, consider the vector $a^{-1}(av)$. Using the associativity of scalar multiplication, we have:
+\[
+a^{-1}(av) = (a^{-1}a)v = 1v = v.
+\]
+
+Given that $av = 0$, we substitute this into the above expression:
+\[
+a^{-1}(0) = 0.
+\]
+
+So, we have:
+\[
+v = 0,
+\]
+which contradicts our assumption that $v \neq 0$.
+
+Therefore, our assumption that both $a \neq 0$ and $v \neq 0$ must be false. Hence, it must be that either $a = 0$ or $v = 0$.
+\end{solution}
+
+\begin{exercise}
+Prove that $-(-v) = v$ for every $v \in V$.
+\end{exercise}
+
+\begin{solution}
+By definition of the additive inverse, we have:
+\[
+(-v) + (-(-v)) = 0 \quad \text{and} \quad v + (-v) = 0.
+\]
+
+This implies that both $v$ and $-(-v)$ are additive inverses of $-v$. By the uniqueness of the additive inverse, it follows that:
+\[
+-(-v) = v.
+\]
+\end{solution}
+
+\begin{exercise}
+Suppose $v, w \in V$. Explain why there exists a unique $x \in V$ such that $v + 3x = w$.
+\end{exercise}
+
+\begin{solution}
+To find a unique $x \in V$ such that $v + 3x = w$, we proceed as follows:
+
+First, isolate $3x$ by subtracting $v$ from both sides of the equation:
+\[
+v + 3x = w \implies 3x = w - v.
+\]
+
+Since $3 \neq 0$ in the field $\mathbf{F}$, there exists a multiplicative inverse of $3$, denoted as $\frac{1}{3}$. Multiply both sides of the equation $3x = w - v$ by $\frac{1}{3}$:
+\[
+x = \frac{1}{3} (w - v).
+\]
+
+We have now found an $x \in V$ that satisfies the equation. To prove the uniqueness of $x$, suppose there exists another $x' \in V$ such that $v + 3x' = w$. Then:
+\[
+3x' = w - v.
+\]
+
+Multiplying both sides by $\frac{1}{3}$, we obtain:
+\[
+x' = \frac{1}{3} (w - v).
+\]
+
+Thus, $x = x'$, showing that the solution $x$ is unique.
+
+Therefore, for any $v, w \in V$, there exists a unique $x \in V$ such that $v + 3x = w$.
+\end{solution}
+
+\begin{exercise}
+Show that in the definition of a vector space, the additive inverse condition can be replaced with the condition that
+\[
+0 v = 0 \quad \text{for all } v \in V,
+\]
+where the 0 on the left side is the scalar zero, and the 0 on the right side is the additive identity of $V$.
+\end{exercise}
+
+\begin{solution}
+We begin by noting the properties of scalar multiplication and the existence of the zero vector in a vector space. The condition $0v = 0_V$ for all $v \in V$ implies that multiplying any vector by the scalar zero yields the zero vector, consistent with vector space axioms.
+
+To demonstrate the additive inverse property using $0v = 0_V$, consider:
+\[
+0v = (0+0)v = 0v + 0v.
+\]
+Subtracting $0v$ from both sides, we have:
+\[
+0v = 0_V.
+\]
+
+We leverage the distributive property of scalar multiplication over vector addition to find an additive inverse:
+\[
+1v + (-1)v = (1-1)v = 0v = 0_V.
+\]
+This simplifies to:
+\[
+v + (-1)v = 0_V,
+\]
+where $(-1)v$ acts as the additive inverse of $v$. Thus, $(-1)v = -v$, and we confirm:
+\[
+v + (-v) = 0_V.
+\]
+
+Thus, the condition $0v = 0_V$ indeed implies the existence of an additive inverse for every vector $v$ in $V$, allowing us to replace the explicit requirement for an additive inverse with the condition $0v = 0_V$ in the definition of a vector space.
+\end{solution}
+
+\begin{exercise}
+Let $\infty$ and $-\infty$ denote two distinct objects, neither of which is in $\mathbf{R}$. Define an addition and scalar multiplication on $\mathbf{R} \cup\{\infty,-\infty\}$ as you could guess from the notation. Specifically, the sum and product of two real numbers is as usual, and for $t \in \mathbf{R}$ define
+
+\[
+t \infty=\left\{\begin{array}{ll}
+-\infty & \text { if } t<0 \\
+0 & \text { if } t=0, \\
+\infty & \text { if } t>0
+\end{array} \quad t(-\infty)= \begin{cases}\infty & \text { if } t<0 \\
+0 & \text { if } t=0 \\
+-\infty & \text { if } t>0\end{cases}\right.
+\]
+
+and
+
+\[
+\begin{aligned}
+t+\infty & =\infty+t=\infty+\infty=\infty \\
+t+(-\infty) & =(-\infty)+t=(-\infty)+(-\infty)=-\infty \\
+\infty+(-\infty) & =(-\infty)+\infty=0
+\end{aligned}
+\]
+
+With these operations of addition and scalar multiplication, is $\mathbf{R} \cup\{\infty,-\infty\}$ a vector space over $\mathbf{R}$ ? Explain.
+\end{exercise}
+\begin{solution}
+This is not a vector space over $\mathbb{R}$. Consider the distributive properties. If this is a vector space over $\mathbb{R}$, we will have
+$$
+\infty=(2+(-1)) \infty=2 \infty+(-1) \infty=\infty+(-\infty)=0 \text {. }
+$$
+
+Hence for any $t \in \mathbb{R}$, one has
+$$
+t=0+t=\infty+t=\infty=0 .
+$$
+
+We get a contradiction since zero vector is unique.
+\end{solution}
+
+\begin{exercise}
+Suppose $V$ is a real vector space.
+The complexification of $V$, denoted by $V_{\mathrm{C}}$, equals $V \times V$. An element of $V_{\mathrm{C}}$ is an ordered pair $(u, v)$, where $u, v \in V$, but we write this as $u+i v$.
+Addition on $V_{\mathrm{C}}$ is defined by
+
+\[
+\left(u_{1}+i v_{1}\right)+\left(u_{2}+i v_{2}\right)=\left(u_{1}+u_{2}\right)+i\left(v_{1}+v_{2}\right)
+\]
+
+for all $u_{1}, v_{1}, u_{2}, v_{2} \in V$.
+- Complex scalar multiplication on $V_{\mathrm{C}}$ is defined by
+
+\[
+(a+b i)(u+i v)=(a u-b v)+i(a v+b u)
+\]
+
+for all $a, b \in \mathbf{R}$ and all $u, v \in V$.
+
+Prove that with the definitions of addition and scalar multiplication as above, $V_{\mathrm{C}}$ is a complex vector space.
+
+Think of $V$ as a subset of $V_{\mathrm{C}}$ by identifying $u \in V$ with $u+i 0$. The construction of $V_{\mathrm{C}}$ from $V$ can then be thought of as generalizing the construction of $\mathbf{C}^{n}$ from $\mathbf{R}^{n}$.
+\end{exercise}
+
+\begin{solution}
+To prove that \( V_C \) is closed under complex scalar multiplication, we need to show that for any complex scalar \( a + bi \in \mathbb{C} \) and any element \( u + iv \in V_C \), the product \( (a + bi)(u + iv) \) is also in \( V_C \).
+
+Recall the definition of complex scalar multiplication on \( V_C \):
+\[ (a + bi)(u + iv) = (au - bv) + i(av + bu) \]
+
+We need to verify that the result of this multiplication, \( (au - bv) + i(av + bu) \), is an element of \( V_C \).
+
+\begin{itemize}
+    \item The real part of the product is \( au - bv \).
+    \item The imaginary part of the product is \( av + bu \).
+\end{itemize}
+
+Since \( u, v \in V \) and \( V \) is a real vector space, we know the following:
+\begin{itemize}
+    \item \( u, v \in V \implies au, bv \in V \) because \( V \) is closed under scalar multiplication.
+    \item \( V \) is closed under addition, so \( au - bv \in V \).
+    \item Similarly, \( av, bu \in V \) and \( V \) is closed under addition, so \( av + bu \in V \).
+\end{itemize}
+
+Therefore, both \( au - bv \in V \) and \( av + bu \in V \), implying that \( (au - bv) + i(av + bu) \in V_C \).
+
+Thus, we have shown that \( (a + bi)(u + iv) \in V_C \), confirming that \( V_C \) is closed under complex scalar multiplication.
+
+\end{solution}
+
+
+\section{Subspace of Vector Space}
+\begin{definition}[Subspace]
+    A subset $U$ of $V$ is called a subspace of $V$ if $U$ is also a vector space with the same additive identity, addition, and scalar multiplication as on $V$.
+\end{definition}
+\subsection{Criteria of Subspace}
+\begin{proposition}[Conditions for a Subspace]
+    A subset $U$ of $V$ is a subspace of $V$ if and only if $U$ satisfies the following three conditions.
+
+\begin{enumerate}
+    \item \textbf{additive identity}: $0 \in U$.
+    \item \textbf{closed under addition}: $u, w \in U$ implies $u+w \in U$.
+    \item \textbf{closed under scalar multiplication}: $a \in \mathbb{F}$ and $u \in U$ implies $a u \in U$.
+\end{enumerate}
+
+\end{proposition}
+
+\begin{exercise}
+1 For each of the following subsets of $\mathbb{F}^{3}$, determine whether it is a subspace of $\mathbb{F}^{3}$.
+
+(a) $\left\{\left(x_{1}, x_{2}, x_{3}\right) \in \mathbb{F}^{3}: x_{1}+2 x_{2}+3 x_{3}=0\right\}$
+
+(b) $\left\{\left(x_{1}, x_{2}, x_{3}\right) \in \mathbb{F}^{3}: x_{1}+2 x_{2}+3 x_{3}=4\right\}$
+
+(c) $\left\{\left(x_{1}, x_{2}, x_{3}\right) \in \mathbb{F}^{3}: x_{1} x_{2} x_{3}=0\right\}$
+
+(d) $\left\{\left(x_{1}, x_{2}, x_{3}\right) \in \mathbb{F}^{3}: x_{1}=5 x_{3}\right\}$
+\end{exercise}
+\begin{solution}
+We apply the rules given.
+\begin{enumerate}
+    \item[(a)] \(\left\{ \left( x_{1}, x_{2}, x_{3} \right) \mid x_{1} + 2x_{2} + 3x_{3} = 0 \right\}\)
+    \begin{enumerate}
+        \item \textbf{Additive Identity:} \(0 + 2 \cdot 0 + 3 \cdot 0 = 0\), so \( \mathbf{0} \in U \).
+        \item \textbf{Closed under Addition:} If \(u = (u_{1}, u_{2}, u_{3}) \in U\) and \(w = (w_{1}, w_{2}, w_{3}) \in U\), then \((u_{1} + w_{1}) + 2(u_{2} + w_{2}) + 3(u_{3} + w_{3}) = 0\), so \(u + w \in U\).
+        \item \textbf{Closed under Scalar Multiplication:} If \(u = (u_{1}, u_{2}, u_{3}) \in U\) and \(a \in \mathbb{F}\), then \(a(u_{1} + 2u_{2} + 3u_{3}) = 0\), so \(au \in U\).
+    \end{enumerate}
+    Hence, \( U \) is a subspace of \(\mathbb{F}^{3}\).
+
+    \item[(b)] \(\left\{ \left( x_{1}, x_{2}, x_{3} \right) \mid x_{1} + 2x_{2} + 3x_{3} = 4 \right\}\)
+    \begin{enumerate}
+        \item \textbf{Additive Identity:} \(0 + 2 \cdot 0 + 3 \cdot 0 = 0 \neq 4\), so \( \mathbf{0} \notin U \).
+    \end{enumerate}
+    Hence, \( U \) is not a subspace of \(\mathbb{F}^{3}\).
+
+    \item[(c)] \(\left\{ \left( x_{1}, x_{2}, x_{3} \right) \mid x_{1} x_{2} x_{3} = 0 \right\}\)
+    \begin{enumerate}
+        \item \textbf{Additive Identity:} \(0 \cdot 0 \cdot 0 = 0\), so \( \mathbf{0} \in U \).
+        \item \textbf{Closed under Addition:} \(u = (1, 0, 0) \in U\) and \(w = (0, 1, 0) \in U\), but \(u + w = (1, 1, 0) \notin U\).
+    \end{enumerate}
+    Hence, \( U \) is not a subspace of \(\mathbb{F}^{3}\).
+
+    \item[(d)] \(\left\{ \left( x_{1}, x_{2}, x_{3} \right) \mid x_{1} = 5x_{3} \right\}\)
+    \begin{enumerate}
+        \item \textbf{Additive Identity:} \(0 = 5 \cdot 0\), so \( \mathbf{0} \in U \).
+        \item \textbf{Closed under Addition:} If \(u = (5u_{3}, u_{2}, u_{3}) \in U\) and \(w = (5w_{3}, w_{2}, w_{3}) \in U\), then \(u + w = (5(u_{3} + w_{3}), u_{2} + w_{2}, u_{3} + w_{3}) \in U\).
+        \item \textbf{Closed under Scalar Multiplication:} If \(u = (5u_{3}, u_{2}, u_{3}) \in U\) and \(a \in \mathbb{F}\), then \(au = (5(au_{3}), au_{2}, au_{3}) \in U\).
+    \end{enumerate}
+    Hence, \( U \) is a subspace of \(\mathbb{F}^{3}\).
+\end{enumerate}
+\end{solution}
+
+\begin{exercise}
+Justify each of the following sets is a subspace, providing necessary conditions where applicable.
+
+\begin{enumerate}
+    \item[(a)] If \( b \in \mathbb{F} \), then \(\left\{(x_{1}, x_{2}, x_{3}, x_{4}) \in \mathbb{F}^{4} \mid x_{3} = 5x_{4} + b \right\}\) is a subspace of \(\mathbb{F}^{4}\) if and only if \( b = 0 \).
+    
+    \item[(b)] The set of continuous real-valued functions on the interval \([0,1]\) is a subspace of \(\mathbb{R}^{[0,1]}\).
+    
+    \item[(c)] The set of differentiable real-valued functions on \(\mathbb{R}\) is a subspace of \(\mathbb{R}^{\mathbb{R}}\).
+    
+    \item[(d)] The set of differentiable real-valued functions \( f \) on the interval \((0,3)\) such that \( f'(2) = b \) is a subspace of \(\mathbb{R}^{(0,3)}\) if and only if \( b = 0 \).
+    
+    \item[(e)] The set of all sequences of complex numbers with limit \( 0 \) is a subspace of \(\mathbb{C}^{\infty}\).
+\end{enumerate}
+\end{exercise}
+\begin{solution}
+    By conditions of a subspace.
+    \begin{enumerate}
+        \item[(a)] Let \( x_1 = m \), \( x_2 = n \), \( x_4 = a \), \( x_3 = 5a + b \). Since \( b \in \mathbb{F} \) and \( x_1, x_2, x_4 \in \mathbb{F} \), \( x_3 \in \mathbb{F} \). Thus we can show that the subspace \( U \) is closed under multiplication and addition. Now we only need to show the existence of additive identity. We only need to show that \( x_3 \) can be 0, since the rest of the components are all in \( \mathbb{F} \). As \( b \in \mathbb{F} \), when \( b = 0 \) and \( x_4 = 0 \), \( x_3 = 0 \), and thus \( \mathbf{0} \in \mathbb{F}^4 \). Hence, \( U \) is a subspace of \( \mathbb{F}^4 \) when \( b = 0 \).
+        
+        \item[(b)] The set of continuous real-valued functions on the interval \([0,1]\), denoted by \( C([0,1]) \), is a subspace of \( \mathbb{R}^{[0,1]} \). It is obvious that the zero function \( f(x) = 0 \) for all \( x \in [0,1] \) is continuous and hence belongs to \( C([0,1]) \). Also, if \( f \) and \( g \) are continuous functions on \([0,1]\), then \( f + g \) and \( cf \) (for any scalar \( c \in \mathbb{R} \)) are also continuous on \([0,1]\). Therefore, \( C([0,1]) \) is closed under addition and scalar multiplication, making it a subspace.
+        
+        \item[(c)] The set of differentiable real-valued functions on \( \mathbb{R} \), denoted by \( D(\mathbb{R}) \), is a subspace of \( \mathbb{R}^{\mathbb{R}} \). The zero function \( f(x) = 0 \) for all \( x \in \mathbb{R} \) is differentiable. If \( f \) and \( g \) are differentiable functions, then their sum \( f + g \) and scalar multiple \( cf \) are also differentiable. Therefore, \( D(\mathbb{R}) \) is closed under addition and scalar multiplication, making it a subspace.
+        
+        \item[(d)] The set of differentiable real-valued functions \( f \) on the interval \( (0,3) \) such that \( f'(2) = b \), denoted by \( D_b((0,3)) \), is a subspace of \( \mathbb{R}^{(0,3)} \) if and only if \( b = 0 \). To be a subspace, it must include the zero function, which means \( f'(2) = 0 \) for the zero function. This implies \( b = 0 \). For \( b = 0 \), the set \( D_0((0,3)) \) includes the zero function. Additionally, if \( f \) and \( g \) are in \( D_0((0,3)) \), then \( (f + g)'(2) = f'(2) + g'(2) = 0 + 0 = 0 \), and if \( f \) is in \( D_0((0,3)) \) and \( c \) is a scalar, then \( (cf)'(2) = cf'(2) = c \cdot 0 = 0 \). Thus, \( D_0((0,3)) \) is closed under addition and scalar multiplication, making it a subspace.
+        
+        \item[(e)] The set of all sequences of complex numbers with limit \( 0 \) is a subspace of \( \mathbb{C}^{\infty} \). Let \( S \) be the set of all sequences of complex numbers with limit \( 0 \). The zero sequence \( (0, 0, 0, \ldots) \) is in \( S \). If \( (a_n) \) and \( (b_n) \) are in \( S \), then \( \lim_{n \to \infty} a_n = 0 \) and \( \lim_{n \to \infty} b_n = 0 \). Thus, \( \lim_{n \to \infty} (a_n + b_n) = \lim_{n \to \infty} a_n + \lim_{n \to \infty} b_n = 0 + 0 = 0 \), so \( (a_n + b_n) \in S \). If \( (a_n) \in S \) and \( c \in \mathbb{C} \), then \( \lim_{n \to \infty} (c a_n) = c \lim_{n \to \infty} a_n = c \cdot 0 = 0 \), so \( (c a_n) \in S \). Thus, \( S \) is closed under addition and scalar multiplication, making it a subspace.
+    \end{enumerate}
+\end{solution}
+
+\begin{exercise}
+    Show that the set of differentiable real-valued functions $f$ on the interval $(-4,4)$ such that $f^{\prime}(-1)=3 f(2)$ is a subspace of $\mathbf{R}^{(-4,4)}$.
+\end{exercise}
+\begin{solution}
+To prove that the set \( V = \{ f : (-4,4) \to \mathbb{R} \mid f \text{ is differentiable and } f'(-1) = 3f(2) \} \) is a subspace of \( \mathbb{R}^{(-4,4)} \), we need to verify the following three conditions:
+
+\begin{enumerate}
+    \item \( V \) contains the zero vector (zero function).
+    \item \( V \) is closed under addition.
+    \item \( V \) is closed under scalar multiplication.
+\end{enumerate}
+
+\paragraph{1. Zero function:}
+
+Consider the zero function \( f(x) = 0 \). We need to verify that it belongs to \( V \).
+
+\[
+f'(x) = 0 \text{ for all } x \in (-4,4)
+\]
+
+Specifically, \( f'(-1) = 0 \) and \( f(2) = 0 \). Therefore,
+
+\[
+f'(-1) = 0 = 3 \cdot 0 = 3f(2)
+\]
+
+Hence, the zero function belongs to \( V \).
+
+\paragraph{2. Closed under addition:}
+
+Assume \( f \) and \( g \) both belong to \( V \). We need to show that \( f + g \) also belongs to \( V \).
+
+Since \( f \) and \( g \) belong to \( V \), we have
+
+\[
+f'(-1) = 3f(2) \quad \text{and} \quad g'(-1) = 3g(2)
+\]
+
+Consider \( h = f + g \). We need to check if \( h \) satisfies \( h'(-1) = 3h(2) \).
+
+Since \( h = f + g \), we have
+
+\[
+h' = f' + g'
+\]
+
+Thus,
+
+\[
+h'(-1) = f'(-1) + g'(-1)
+\]
+
+and
+
+\[
+h(2) = f(2) + g(2)
+\]
+
+Therefore,
+
+\[
+h'(-1) = f'(-1) + g'(-1) = 3f(2) + 3g(2) = 3(f(2) + g(2)) = 3h(2)
+\]
+
+This shows that \( f + g \) also satisfies \( f'(-1) = 3f(2) \), so \( f + g \) belongs to \( V \).
+
+\paragraph{3. Closed under scalar multiplication:}
+
+Assume \( f \) belongs to \( V \) and \( c \) is a scalar. We need to show that \( cf \) also belongs to \( V \).
+
+Since \( f \) belongs to \( V \), we have
+
+\[
+f'(-1) = 3f(2)
+\]
+
+Consider \( h = cf \). We need to check if \( h \) satisfies \( h'(-1) = 3h(2) \).
+
+Since \( h = cf \), we have
+
+\[
+h' = c f'
+\]
+
+Thus,
+
+\[
+h'(-1) = c f'(-1)
+\]
+
+and
+
+\[
+h(2) = c f(2)
+\]
+
+Therefore,
+
+\[
+h'(-1) = c f'(-1) = c \cdot 3f(2) = 3c f(2) = 3h(2)
+\]
+
+This shows that \( cf \) also satisfies \( f'(-1) = 3f(2) \), so \( cf \) belongs to \( V \).
+\end{solution}
+
+\begin{exercise}
+    Suppose $b \in \mathbf{R}$. Show that the set of continuous real-valued functions $f$ on the interval $[0,1]$ such that $\int_{0}^{1} f=b$ is a subspace of $\mathbf{R}^{[0,1]}$ if and only if $b=0$.
+\end{exercise}
+
+\begin{solution}
+Denote the set of continuous real-valued functions $f$ on the interval $[0,1]$ such that $\int_0^1 f=b$ by $V_b$.
+
+If $V_b$ is a subspace of $\mathbb{R}^{[0,1]}$, then for any $f \in V_b$, we have $\int_0^1 f=b$. Because $V_b$ is a subspace of $\mathbb{R}^n$, it follows that $k f \in V_b$ for any $k \in \mathbb{R}$. Hence
+$$
+b=\int_0^1(k f)=k \int_0^1 f=k b, \quad \text { for all } k \in \mathbb{R},
+$$
+this happens if and only if $b=0$.
+
+Now if $b=0$, then for any $f, g \in V_0$ and $\lambda \in \mathbb{R}$. We have that
+$$
+\int_0^1(f+g)=\int_0^1 f+\int_0^1 g=0+0=0
+$$
+and $f+g$ is continuous real-valued functions since $f$ and $g$ are. This deduces $f+g \in V_0$, i.e. $V_0$ is closed under addition. Similarly,
+$$
+\int_0^1(\lambda f)=\lambda \int_0^1 f=k 0=0
+$$
+and $\lambda f$ is continuous real-valued functions since $f$ is. This implies $\lambda f \in V_0$, i.e. $V_0$ is closed under scalar multiplication. On the other hand, the constant function $f \equiv 0 \in V_0$, which is also the additive identity in $\mathbb{R}^{[0,1]}$. Hence $V_0$ is a subspace of $\mathbb{R}^n$ by 1.34 .
+\end{solution}
+
+\begin{exercise}
+    A function $f: \mathbf{R} \rightarrow \mathbf{R}$ is called periodic if there exists a positive number $p$ such that $f(x)=f(x+p)$ for all $x \in \mathbf{R}$. Is the set of periodic functions from $\mathbf{R}$ to $\mathbf{R}$ a subspace of $\mathbf{R}^{\mathbf{R}}$ ? Explain.
+\end{exercise}
+\begin{solution}
+Let's analyze whether the set of periodic functions from \(\mathbf{R}\) to \(\mathbf{R}\) forms a subspace of \(\mathbf{R}^{\mathbf{R}} \), the vector space of all functions from \(\mathbf{R}\) to \(\mathbf{R}\).
+
+To be a subspace, the set of periodic functions must satisfy three conditions:
+
+1. \textbf{Contain the zero vector:} The zero vector in \(\mathbf{R}^{\mathbf{R}}\) is the zero function \(f(x) = 0\) for all \(x \in \mathbf{R}\). This function is trivially periodic with any period \(p > 0\), so the zero function is in the set of periodic functions.
+
+2. \textbf{Closed under addition:} Suppose \(f\) and \(g\) are periodic functions with periods \(p_f\) and \(p_g\), respectively. That means \(f(x) = f(x + p_f)\) and \(g(x) = g(x + p_g)\) for all \(x \in \mathbf{R}\). We need to determine if the function \(h = f + g\) is periodic. For \(h\) to be periodic, there must exist a period \(p > 0\) such that \(h(x) = h(x + p)\) for all \(x\). However, the sum of two periodic functions is not necessarily periodic unless their periods are commensurate (i.e., there exists some positive integer multiples of \(p_f\) and \(p_g\) that are equal). In general, \(f(x + p) + g(x + p)\) might not equal \(f(x) + g(x)\) unless \(p\) is a common multiple of \(p_f\) and \(p_g\), which is not guaranteed for arbitrary periodic functions. Hence, the set is not closed under addition.
+
+3. \textbf{Closed under scalar multiplication:} Suppose \(f\) is a periodic function with period \(p\) and \(\lambda\) is a scalar. The function \(\lambda f\) is periodic with the same period \(p\) because \(\lambda f(x + p) = \lambda f(x)\). Hence, the set is closed under scalar multiplication.
+
+Since the set of periodic functions is not closed under addition, it fails to meet one of the necessary conditions for being a subspace. Therefore, the set of periodic functions from \(\mathbf{R}\) to \(\mathbf{R}\) is \textbf{not} a subspace of \(\mathbf{R}^{\mathbf{R}}\).
+
+In conclusion, the composition (addition) of two periodic functions does not necessarily result in a new periodic function unless the functions have the same period or commensurate periods, so the set is not closed under addition.
+\end{solution}

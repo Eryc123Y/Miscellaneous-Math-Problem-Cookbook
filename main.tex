@@ -1,0 +1,260 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 3.1 (February 18, 2022)
+%
+% This template originates from:
+% https://www.LaTeXTemplates.com
+%
+% Authors:
+% Vel (vel@latextemplates.com)
+% Mathias Legrand (legrand.mathias@gmail.com)
+%
+% License:
+% CC BY-NC-SA 4.0 (https://creativecommons.org/licenses/by-nc-sa/4.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s indexstyle.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[
+	12pt, % Default font size, select one of 10pt, 11pt or 12pt
+	fleqn, % Left align equations
+	a4paper, % Paper size, use either 'a4paper' for A4 size or 'letterpaper' for US letter size
+	%oneside, % Uncomment for oneside mode, this doesn't start new chapters and parts on odd pages (adding an empty page if required), this mode is more suitable if the book is to be read on a screen instead of printed
+]{LegrandOrangeBook}
+
+% Book information for PDF metadata, remove/comment this block if not required 
+\hypersetup{
+	pdftitle={Title}, % Title field
+	pdfauthor={Author}, % Author field
+	pdfsubject={Subject}, % Subject field
+	pdfkeywords={Keyword1, Keyword2, ...}, % Keywords
+	pdfcreator={LaTeX}, % Content creator field
+}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{algorithm}
+%\usepackage{enumitem}
+\usepackage{algpseudocode}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{karnaugh-map}
+\usepackage{amsthm}
+\usepackage{thmtools}
+\usepackage{amsmath}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usetikzlibrary{automata}
+\usetikzlibrary{arrows.meta}
+\usepackage{comment}
+\usepackage{array}
+\usepackage{booktabs}
+\usetikzlibrary{3d, shapes.geometric, positioning}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Shorthand
+\newcommand{\vect}[1]{\mathbf{#1}} % For regular vectors
+\newcommand{\uvec}[1]{\hat{\mathbf{#1}}} % For unit vectors
+
+\newcommand{\R}{\mathbb{R}} % Real numbers
+\newcommand{\Z}{\mathbb{Z}} % Integers
+\newcommand{\C}{\mathbb{C}} % Complex numbers
+\newcommand{\N}{\mathbb{N}} % Natural numbers
+\newcommand{\Q}{\mathbb{Q}} % Rational numbers
+\newcommand{\Hq}{\mathbb{H}} % Quaternions
+\newcommand{\F}{\mathbb{F}} % Finite fields
+\newcommand{\Proj}{\mathbb{P}} % Projective space
+\newcommand{\K}{\mathbb{K}} % Arbitrary field
+\newcommand{\T}{\mathbb{T}} % Torus or sometimes denoted for Topological space
+\newcommand{\A}{\mathbb{A}} % Affine space
+\newcommand{\0}{\mathbf{0}} % Zero vector
+
+\newcommand{\tx}[1]{
+	\text{#1}
+	}
+\newcommand{\mb}[1]{
+	\mathbb{#1}
+}
+
+\newcommand{\seq}[3]{
+% write sequence expression
+% Params: #1 notation, #2,#3 lower and upper boundaries  
+      \ensuremath{\{#1_n\}_{n=#2}^{#3}}
+}
+
+
+% tikz preset for relation
+\newcommand{\tikzinitRelation}{
+	\tikzset{
+		circlenode/.style={
+			circle,
+			draw,
+			thick,
+			align=center 
+		},
+		edge/.style={
+			->,          
+			>={Latex},   
+			thick        
+		}
+	}
+	
+}
+% normal circle node with lable inside
+\newcommand{\newnode}[3]{
+	\node[circlenode] (#1) at (#2,#3) {#1};
+}
+
+% single arrow
+\newcommand{\arrow}[2]{
+	\draw[edge] (#1) -- (#2);
+}
+
+% arrow to self
+\newcommand{\selfloop}[2]{
+	\draw[edge, loop #2] (#1) to (#1);
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newtheoremstyle{lemmastyle}
+  {9pt}  
+  {9pt} 
+  {\slshape} 
+  {}    
+  {\bfseries} 
+  {.}  
+  {5pt} 
+  {}   
+
+\theoremstyle{lemmastyle}
+\newtheorem{lemma}{Lemma}[chapter]
+
+
+
+\newtheoremstyle{solutionStyle}
+  {5pt}  
+  {5pt} 
+  {\upshape} 
+  {\parindent} 
+  {\bfseries}
+  {:}    
+  {3pt}  
+  {}     
+
+
+\theoremstyle{solutionStyle}  
+\newtheorem*{solution}{Solution}
+
+% Define a new theorem style called 'axiom_style'
+\newtheoremstyle{axiom_style}% name of the style to be used
+  {3pt}% Space above
+  {3pt}% Space below
+  {\normalfont}% Body font
+  {}% Indent amount
+  {\bfseries}% Theorem head font
+  {.}% Punctuation after theorem head
+  {.5em}% Space after theorem head
+  {}% Theorem head spec (can be left empty, meaning 'normal')
+
+% Apply the theorem style
+\theoremstyle{axiom_style}
+
+% Define the 'axiom' theorem with chapter numbering
+\newtheorem{axiom}{Axiom}[chapter]
+%\addbibresource{sample.bib} % Bibliography file
+
+\definecolor{ocre}{RGB}{243, 102, 25} % Define the color used for highlighting throughout the book
+
+\chapterimage{orange1.jpg} % Chapter heading image
+\chapterspaceabove{6.5cm} % Default whitespace from the top of the page to the chapter title on chapter pages
+\chapterspacebelow{6.75cm} % Default amount of vertical whitespace from the top margin to the start of the text on chapter pages
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\titlepage % Output the title page
+	{\includegraphics[width=\paperwidth]{background.pdf}} % Code to output the background image, which should be the same dimensions as the paper to fill the page entirely; leave empty for no background image
+	{ % Title(s) and author(s)
+		\centering\sffamily % Font styling
+		{\Huge\bfseries Miscellaneous Math Problems\par} % Book title
+		\vspace{16pt} % Vertical whitespace
+		{\LARGE A Temporary Math Resource} % Subtitle
+		\vspace{24pt} % Vertical whitespace
+		{\huge\bfseries \\ Eric Yang Xingyu\par} % Author name
+	}
+
+%----------------------------------------------------------------------------------------
+%	COPYRIGHT PAGE
+%----------------------------------------------------------------------------------------
+
+\thispagestyle{empty} % Suppress headers and footers on this page
+
+~\vfill % Push the text down to the bottom of the page
+
+\noindent Copyright \copyright\ 2024 Eric Yang Xingyu\\ % Copyright notice
+
+\noindent \textsc{Published by Publisher}\\ % Publisher
+This \LaTeX \space template is from 
+\noindent \textsc{\href{https://www.latextemplates.com/template/legrand-orange-book}{book-website.com}}\\ % URL
+
+\noindent Licensed under the Creative Commons Attribution-NonCommercial 4.0 License (the ``License''). You may not use this file except in compliance with the License. You may obtain a copy of the License at \url{https://creativecommons.org/licenses/by-nc-sa/4.0}. Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an \textsc{``as is'' basis, without warranties or conditions of any kind}, either express or implied. See the License for the specific language governing permissions and limitations under the License.\\ % License information, replace this with your own license (if any)
+
+\noindent \textit{First amendment, March 2024} % Printing/edition date
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\pagestyle{empty} % Disable headers and footers for the following pages
+
+\tableofcontents % Output the table of contents
+
+\listoffigures % Output the list of figures, comment or remove this command if not required
+
+\listoftables % Output the list of tables, comment or remove this command if not required
+
+\pagestyle{fancy} % Enable default headers and footers again
+
+\cleardoublepage % Start the following content on a new page
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+\part{Calculus and Real Analysis}
+\input{content/P1_calculus}
+
+\part{Linear Algebra}
+\input{content/P2_linear_alg}
+
+\part{Differential Equation}
+\input{content/P3_Differential Equation}
+
+
+%\stopcontents[part] % Manually stop the 'part' table of contents here so the previous Part page table of contents doesn't list the following chapters
+
+
+\end{document}
