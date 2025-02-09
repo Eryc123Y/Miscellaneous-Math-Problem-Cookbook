@@ -644,3 +644,168 @@ Since the set of periodic functions is not closed under addition, it fails to me
 
 In conclusion, the composition (addition) of two periodic functions does not necessarily result in a new periodic function unless the functions have the same period or commensurate periods, so the set is not closed under addition.
 \end{solution}
+
+\chapter{Linear Map and Linear Transformation}
+
+
+\section{Transformation Matrix}
+\subsection{Base Case: Transformation in $\R^2$}
+\begin{definition}[Rotation Matrix]
+A counterclockwise rotation by an angle $\theta$ in R² is represented by the matrix:
+$$\begin{bmatrix}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{bmatrix}$$
+
+For clockwise rotation by angle $\theta$, use either:
+$$R_{cw}(\theta) = \begin{bmatrix} 
+\cos \theta & \sin \theta \\
+-\sin \theta & \cos \theta
+\end{bmatrix}$$
+or equivalently, use counterclockwise rotation with $-\theta$:
+$$R_{ccw}(-\theta) = R_{cw}(\theta)$$
+
+Properties:
+\begin{itemize}
+    \item Preserves distances and angles (isometry)
+    \item $\det(R(\theta)) = 1$
+    \item $R(\theta)$ is orthogonal: $R(\theta)R(\theta)^T = I$
+    \item $R(\theta_1)R(\theta_2) = R(\theta_1 + \theta_2)$
+    \item $R^{-1}(\theta) = R(-\theta)$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Scaling Matrix]
+A scaling transformation with factors $a$ and $b$ in R² is represented by:
+$$S(a,b) = \begin{bmatrix}
+a & 0 \\
+0 & b
+\end{bmatrix}$$
+
+Properties:
+\begin{itemize}
+    \item Changes distances by factors $a$ and $b$ in respective directions
+    \item $\det(S(a,b)) = ab$
+    \item Uniform scaling occurs when $a = b$
+    \item The transformation is invertible if and only if $a, b \neq 0$
+    \item If $a, b > 0$, orientation is preserved
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Shear Matrix]
+A horizontal shear transformation with factor $k$ in R² is represented by:
+$$H_x(k) = \begin{bmatrix}
+1 & k \\
+0 & 1
+\end{bmatrix}$$
+
+A vertical shear with factor $k$ is given by:
+$$H_y(k) = \begin{bmatrix}
+1 & 0 \\
+k & 1
+\end{bmatrix}$$
+
+Properties:
+\begin{itemize}
+    \item Preserves area: $\det(H_x(k)) = \det(H_y(k)) = 1$
+    \item Preserves parallel lines
+    \item Changes angles except for lines parallel to the axis of shear
+    \item Always invertible: $H_x^{-1}(k) = H_x(-k)$
+    \item Composition of shears: $H_x(k_1)H_x(k_2) = H_x(k_1 + k_2)$
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Reflection Matrices]
+Reflections about various lines in R² are represented by:
+
+About x-axis:
+$$M_x = \begin{bmatrix}
+1 & 0 \\
+0 & -1
+\end{bmatrix}$$
+
+About y-axis:
+$$M_y = \begin{bmatrix}
+-1 & 0 \\
+0 & 1
+\end{bmatrix}$$
+
+About line y = x:
+$$M_{y=x} = \begin{bmatrix}
+0 & 1 \\
+1 & 0
+\end{bmatrix}$$
+
+About origin:
+$$M_O = \begin{bmatrix}
+-1 & 0 \\
+0 & -1
+\end{bmatrix}$$
+
+Properties:
+\begin{itemize}
+    \item Preserves distances (isometry)
+    \item $\det(M) = -1$ (except for origin reflection where $\det(M_O) = 1$)
+    \item $M^2 = I$ (involution)
+    \item Changes orientation (except for origin reflection)
+    \item Composition of two reflections is a rotation
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Projection Matrices]
+Orthogonal projections onto coordinate axes in R² are represented by:
+
+Onto x-axis:
+$$P_x = \begin{bmatrix}
+1 & 0 \\
+0 & 0
+\end{bmatrix}$$
+
+Onto y-axis:
+$$P_y = \begin{bmatrix}
+0 & 0 \\
+0 & 1
+\end{bmatrix}$$
+
+Properties:
+\begin{itemize}
+    \item $\det(P) = 0$
+    \item $P^2 = P$ (idempotent)
+    \item Rank = 1
+    \item Not invertible (singular)
+    \item Reduces dimension of space to a line
+    \item $P_x + P_y = I$ (complementary projections)
+\end{itemize}
+\end{definition}
+
+\begin{example}[Composition of Transformations]
+Let's transform a unit square through a sequence of operations:
+1. Clockwise rotation by 45°
+2. Scaling by factor 2
+3. Horizontal shear with k = 0.5
+
+The resulting transformation matrix is:
+$$T = H_x(0.5)S(2,2)R_{cw}(\pi/4)$$
+
+$$T = \begin{bmatrix}
+1 & 0.5 \\
+0 & 1
+\end{bmatrix}
+\begin{bmatrix}
+2 & 0 \\
+0 & 2
+\end{bmatrix}
+\begin{bmatrix}
+\cos(\pi/4) & \sin(\pi/4) \\
+-\sin(\pi/4) & \cos(\pi/4)
+\end{bmatrix}$$
+
+\begin{itemize}
+    \item Initial square vertices: $(0,0), (1,0), (1,1), (0,1)$
+    \item After rotation: $(\frac{\sqrt{2}}{2}, -\frac{\sqrt{2}}{2}), (\sqrt{2},0), (\frac{\sqrt{2}}{2}, \frac{\sqrt{2}}{2}), (0,0)$
+    \item After scaling: $(\sqrt{2},-\sqrt{2}), (2\sqrt{2},0), (\sqrt{2},\sqrt{2}), (0,0)$
+    \item Final vertices after shear: $(\sqrt{2},-\sqrt{2}), (2\sqrt{2},0), (\sqrt{2}+1,\sqrt{2}), (1,0)$
+\end{itemize}
+
+The determinant of T is 4, indicating the area has increased by a factor of 4.
+\end{example}
